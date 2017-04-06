@@ -20,7 +20,7 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
 from eve import Eve
 import os
-from flask.ext.bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap
 from eve_docs import eve_docs
 
 app = Eve()

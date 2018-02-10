@@ -2,3 +2,7 @@ bin
 include
 lib
 local
+__pycache__
+share
+*.pyc
+pip-selfcheck.json

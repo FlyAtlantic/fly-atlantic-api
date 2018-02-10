@@ -20,10 +20,11 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
 from eve import Eve
 import os
-from flask_bootstrap import Bootstrap
-from eve_docs import eve_docs
+from oauth2 import BearerAuth
+from flask_sentinel import ResourceOwnerPasswordCredentials, oauth
 
-app = Eve()
+app = Eve(auth=BearerAuth)
+ResourceOwnerPasswordCredentials(app)
 
 # Heroku support: bind to PORT if defined, otherwise default to 5000.
 if 'PORT' in os.environ:
@@ -36,7 +37,4 @@ else:
     debug = True
 
 if __name__ == '__main__':
-	Bootstrap(app)
-	app.register_blueprint(eve_docs, url_prefix='/docs')
-
 	app.run(host=host, port=port, debug=debug)

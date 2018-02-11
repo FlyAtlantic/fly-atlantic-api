@@ -100,8 +100,30 @@ airports = {
         }
     }
 }
+waypoints = {
+    'item_title': 'waypoint',
+    'additional_lookup': {
+        'url': 'regex("[\w]{4}")',
+        'field': 'identifier'
+    },
+    'schema': {
+        'identifier': {
+            'type': 'string',
+            'maxlenght': 5,
+            'required': True
+        },
+        'location': {
+            'type': 'point'
+        },
+        'countrycode': {
+            'type:' 'string',
+            'maxlenght': 2
+        }
+    }
+}
 # The DOMAIN dict explains which resources will be available and how they will
 # be accessible to the API consumer.
 DOMAIN = {
-    'airports': airports
+    'airports': airports,
+    'waypoints': waypoints
 }

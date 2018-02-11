@@ -78,7 +78,7 @@ airports = {
             'type': 'dict',
             'schema': {
                 'number': {
-                    'type': 'integer',
+                    'type': 'string',
                     'required': True
                 },
                 'heading': {

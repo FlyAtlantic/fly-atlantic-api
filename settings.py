@@ -1,26 +1,33 @@
 #!/usr/bin/env python
 """
 <one line to give the program's name and a brief idea of what it does.>
-Copyright (C) <year>  <name of author>
+Copyright (C) 2017 Pedro Rodrigues <prodrigues1990@gmail.com>
 
-This file is part of Foobar.
+This file is part of Fly Atlantic API.
 
-Foobar is free software: you can redistribute it and/or modify
+Fly Atlantic API is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, version 2 of the License.
 
-Foobar is distributed in the hope that it will be useful,
+Fly Atlantic API is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+along with Fly Atlantic API.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import os
 
-DOMAIN = {}
+# Enable reads (GET), inserts (POST) and DELETE for resources/collections
+# (if you omit this line, the API will default to ['GET'] and provide
+# read-only access to the endpoint).
+RESOURCE_METHODS = ['GET', 'POST', 'DELETE']
+
+# Enable reads (GET), edits (PATCH) and deletes of individual items
+# (defaults to read-only item access).
+ITEM_METHODS = ['GET', 'PATCH', 'DELETE']
 
 # We want to seamlessy run our API both locally and on Heroku. If running on
 # Heroku, sensible DB connection settings are stored in environment variables.
@@ -30,7 +37,39 @@ MONGO_USERNAME = os.environ.get('MONGO_USERNAME', '')
 MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD', '')
 MONGO_DBNAME = os.environ.get('MONGO_DBNAME', 'fly-atlantic-api')
 
-SENTINEL_MANAGEMENT_USERNAME = os.environ.get('SENTINEL_MANAGEMENT_USERNAME', 'dev')
-SENTINEL_MANAGEMENT_PASSWORD = os.environ.get('SENTINEL_MANAGEMENT_PASSWORD', 'dev')
+SENTINEL_MANAGEMENT_USERNAME = os.environ.get('SENTINEL_MANAGEMENT_USERNAME', '')
+SENTINEL_MANAGEMENT_PASSWORD = os.environ.get('SENTINEL_MANAGEMENT_PASSWORD', '')
+SENTINEL_MONGO_DBNAME = os.environ.get('SENTINEL_MONGO_DBNAME', 'oauth')
 
 X_DOMAINS = '*'
+
+airports = {
+    'item_title': 'airport',
+    'additional_lookup': {
+        'url': 'regex("[\w]{4}")',
+        'field': 'icao'
+    },
+    'schema': {
+        'icao': {
+            'type': 'string',
+            'minlength': 4,
+            'maxlength': 4,
+            'unique': True,
+            'required': True
+        },
+        'location': {
+            'type': 'point'
+        },
+        'elevation': {
+            'type': 'integer'
+        },
+        'transitionaltitude': {
+            'type': 'integer'
+        }
+    }
+}
+# The DOMAIN dict explains which resources will be available and how they will
+# be accessible to the API consumer.
+DOMAIN = {
+    'airports': airports
+}

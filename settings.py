@@ -62,6 +62,9 @@ airports = {
             'unique': True,
             'required': True
         },
+        'name': {
+            'type': 'string'
+        },
         'location': {
             'type': 'point'
         },
@@ -70,6 +73,27 @@ airports = {
         },
         'transitionaltitude': {
             'type': 'integer'
+        },
+        'runways': {
+            'type': 'dict',
+            'schema': {
+                'number': {
+                    'type': 'integer',
+                    'required': True
+                },
+                'heading': {
+                    'type': 'integer'
+                },
+                'lenght': {
+                    'type': 'integer' # should be in meters 
+                },
+                'width': {
+                    'type': 'integer' # should be in meters
+                },
+                'location': {
+                    'type': 'point'
+                }
+            }
         }
     }
 }

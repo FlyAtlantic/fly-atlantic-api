@@ -109,15 +109,15 @@ waypoints = {
     'schema': {
         'identifier': {
             'type': 'string',
-            'maxlenght': 5,
+            'maxlength': 5,
             'required': True
         },
         'location': {
             'type': 'point'
         },
         'countrycode': {
-            'type:' 'string',
-            'maxlenght': 2
+            'type:': 'string',
+            'maxlength': 2
         }
     }
 }

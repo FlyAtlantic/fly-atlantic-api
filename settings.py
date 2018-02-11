@@ -75,23 +75,26 @@ airports = {
             'type': 'integer'
         },
         'runways': {
-            'type': 'dict',
+            'type': 'list',
             'schema': {
-                'number': {
-                    'type': 'string',
-                    'required': True
-                },
-                'heading': {
-                    'type': 'integer'
-                },
-                'lenght': {
-                    'type': 'integer' # should be in meters 
-                },
-                'width': {
-                    'type': 'integer' # should be in meters
-                },
-                'location': {
-                    'type': 'point'
+                'type': 'dict',
+                'schema': {
+                    'number': {
+                        'type': 'string',
+                        'required': True
+                    },
+                    'heading': {
+                        'type': 'integer'
+                    },
+                    'lenght': {
+                        'type': 'integer' # should be in meters
+                    },
+                    'width': {
+                        'type': 'integer' # should be in meters
+                    },
+                    'location': {
+                        'type': 'point'
+                    }
                 }
             }
         }

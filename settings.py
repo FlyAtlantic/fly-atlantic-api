@@ -103,7 +103,7 @@ airports = {
 waypoints = {
     'item_title': 'waypoint',
     'additional_lookup': {
-        'url': 'regex("[\w]{4}")',
+        'url': 'regex("[\w]+")',
         'field': 'identifier'
     },
     'schema': {

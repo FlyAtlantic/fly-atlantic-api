@@ -116,7 +116,7 @@ waypoints = {
             'type': 'point'
         },
         'countrycode': {
-            'type:': 'string',
+            'type': 'string',
             'maxlength': 2
         }
     }

@@ -12,6 +12,7 @@
 from eve.auth import BasicAuth
 from flask import request
 from redis import StrictRedis
+from redis.connection import ConnectionPool
 import os
 
 
